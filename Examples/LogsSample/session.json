@@ -1,0 +1,16 @@
+{
+  "sessionId": "f4d97a2c3a3a4c7a9e5d0f91f1bd2a65",
+  "projectName": "Miner Scenario",
+  "companyName": "DefaultCompany",
+  "productName": "Miner Scenario",
+  "unityVersion": "6000.3.10f1",
+  "platform": "WindowsEditor",
+  "appVersion": "0.1.0",
+  "buildType": "Editor",
+  "startedUtc": "2026-03-18T11:22:11.2500000Z",
+  "endedUtc": "2026-03-18T11:24:59.1230000Z",
+  "sessionFolderName": "session-20260318-112211-a1b2c3",
+  "sessionFolderPath": "C:/Users/User/AppData/LocalLow/DefaultCompany/Miner Scenario/DiagnosticsSessions/session-20260318-112211-a1b2c3",
+  "eventsFilePath": "C:/Users/User/AppData/LocalLow/DefaultCompany/Miner Scenario/DiagnosticsSessions/session-20260318-112211-a1b2c3/events.jsonl",
+  "summaryFilePath": "C:/Users/User/AppData/LocalLow/DefaultCompany/Miner Scenario/DiagnosticsSessions/session-20260318-112211-a1b2c3/summary.txt"
+}
