@@ -1,30 +1,58 @@
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
-namespace Miner.Diagnostics
+[Serializable]
+public sealed class DiagRecord
 {
-    [Serializable]
-    public class DiagRecord
+    public string sessionId;
+    public string category;
+    public string name;
+    public string level;
+    public string scene;
+    public string source;
+    public int frame;
+    public float time;
+    public string message;
+    public List<DiagField> fields = new();
+}
+
+[Serializable]
+public sealed class DiagField
+{
+    public string key;
+    public string value;
+
+    public DiagField() { }
+
+    public DiagField(string key, string value)
     {
-        public string sessionId;
-        public string projectName;
-        public string unityVersion;
-        public string platform;
-        public string buildType;
-        public string scene;
+        this.key = key;
+        this.value = value;
+    }
+}
 
-        public long utcUnixMs;
-        public string utcIso;
-        public float realtimeSinceStartup;
-        public float timeSinceLevelLoad;
-        public int frame;
+public static class DiagFieldBag
+{
+    public static List<DiagField> Create(params (string key, object value)[] pairs)
+    {
+        var list = new List<DiagField>(pairs.Length);
+        for (int i = 0; i < pairs.Length; i++)
+        {
+            list.Add(new DiagField(pairs[i].key, Stringify(pairs[i].value)));
+        }
+        return list;
+    }
 
-        public string channel;
-        public string severity;
-        public string eventName;
-        public string message;
-        public string dataJson;
-        public string stackTrace;
-
-        public HeroDiagSnapshot hero;
+    public static string Stringify(object value)
+    {
+        if (value == null) return "null";
+        return value switch
+        {
+            Vector2 v2 => $"({v2.x:0.###},{v2.y:0.###})",
+            Vector3 v3 => $"({v3.x:0.###},{v3.y:0.###},{v3.z:0.###})",
+            Bounds b => $"center={b.center} size={b.size}",
+            _ => value.ToString()
+        };
     }
 }
